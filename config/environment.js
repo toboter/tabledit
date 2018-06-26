@@ -20,10 +20,23 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'babili': {
+          scope: 'public write'
+        }
+      }
     }
   };
 
   if (environment === 'development') {
+    ENV.torii.providers['babili'].host = process.env.BABILI_DEV_PROVIDER_HOST;
+    ENV.torii.providers['babili'].apiKey = process.env.BABILI_DEV_CLIENT_ID;
+    ENV.torii.providers['babili'].redirectUri = 'http://localhost:4200';
+    ENV.torii.providers['babili'].tokenExchangeUri = process.env.DEV_TOKEN_EXCHANGE_URL;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
