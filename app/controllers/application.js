@@ -5,6 +5,7 @@ import config from '../config/environment';
 export default Controller.extend({
   session: service('session'),
   config: config.torii.providers['babili'],
+  currentUser: service('current-user'),
 
   actions: {
     logout() {

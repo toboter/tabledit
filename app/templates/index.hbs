@@ -1,14 +1,53 @@
-<section class="hero">
+<section class="hero is-medium is-warning is-bold">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        tabl-e|di|t
+        tabl-e{di}t
       </h1>
+      <h2 class="subtitle">
+        A babylon-online app for viewing and editing tablets.
+      </h2>
     </div>
   </div>
 </section>
+
 <section class="section">
-  <div class="container">
-    Username: {{model.username}}
+  <div class="columns">
+    <div class="column is-one-quarter">
+      <aside class="menu">
+        <p class="menu-label">
+          General
+        </p>
+        <ul class="menu-list">
+          <li><a>babylon-online.org</a></li>
+          <li><a>Your profile</a></li>
+        </ul>
+        <p class="menu-label">
+          Repositories
+        </p>
+        <ul class="menu-list">
+          <li><a>Settings</a></li>
+          <li>
+            <a class="is-active">Index</a>
+            <ul>
+              {{#each model as |repoUnit|}}
+                {{repo-listing repo=repoUnit}}
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+        <p class="menu-label">
+          Extra
+        </p>
+        <ul class="menu-list">
+          <li><a>A</a></li>
+          <li><a>B</a></li>
+          <li><a>C</a></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column">
+      Repo content
+    </div>
   </div>
 </section>

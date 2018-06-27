@@ -1,6 +1,6 @@
 <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    {{link-to "tabl-e|di|t" "index" class="navbar-item has-text-weight-bold"}}
+    {{link-to "tabl-e{di}t" "index" class="navbar-item has-text-weight-bold"}}
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -11,10 +11,14 @@
   <div class="navbar-menu">
     <div class="navbar-start">
       {{link-to "About" "about" class="navbar-item"}}
+      {{#if session.isWorking}}
+        <span class="navbar-item">One sec while we get you signed in...</span>
+      {{/if}}
     </div>
 
     <div class="navbar-end">
       {{#if session.isAuthenticated}}
+        <span class="navbar-item">Signed in as {{currentUser.user.username}}</span>
         <a class="navbar-item" onclick={{action "logout"}}>Logout</a>
       {{else}}
         {{link-to "Login" "login" class="navbar-item"}}
@@ -22,15 +26,5 @@
     </div>
   </div>
 </nav>
-
-API Key: {{config.apiKey}} <br />
-
-{{#if session.isAuthenticated}}
-    Token: {{session.data.authenticated.access_token}} <br />
-    Authenticated
-    <p>Signed in as {{currentUser.username}}</p>
-{{else}}
-    Not authenticated
-{{/if}}
-<hr>
 {{outlet}}
+

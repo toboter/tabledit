@@ -12,6 +12,14 @@
 </section>
 <section class="section">
   <div class="container">
-    <p>some description</p>
+    <hr>
+    API Key: {{config.apiKey}} <br />
+    {{#if session.isAuthenticated}}
+      Token: {{session.data.authenticated.access_token}} <br />
+      Authenticated
+    {{else}}
+      Not authenticated
+    {{/if}}
+    <hr>
   </div>
 </section>
